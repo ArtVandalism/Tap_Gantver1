@@ -3,34 +3,54 @@ document.addEventListener("DOMContentLoaded", function () {
     const imageContainer = document.getElementById("imageContainer");
     const clickImage = document.getElementById("clickImage");
     const progressBarFill = document.getElementById("progressBarFill");
-    const snackBar = document.getElementById("snackBar");
 
     let score = 0;
+    let isClicking = false; // Флаг для отслеживания состояния клика
 
-    function increaseScore() {
-        score += 1;
-        scoreElement.textContent = score;
+    function increaseScore(event) {
+        if (!isClicking) {
+            isClicking = true;
+            score += 1;
+            scoreElement.textContent = score;
 
-        let progress = (score % 100) / 100;
-        progressBarFill.style.width = progress * 100 + "%";
+            let progress = (score % 100) / 100;
+            progressBarFill.style.width = progress * 100 + "%";
 
-        if (score % 100 === 0) {
-            showSnackBar();
-            progressBarFill.style.width = "0%";
+            if (score % 100 === 0) {
+                progressBarFill.style.width = "0%";
+            }
+
+            // Анимация картинки
+            clickImage.style.transform = "scale(1)";
+            setTimeout(() => {
+                clickImage.style.transform = "scale(0.6)";
+                isClicking = false; // Сбрасываем флаг после завершения анимации
+            }, 100);
+
+            // Вылетающие цифры
+            createFlyingScore(event.clientX, event.clientY);
         }
-
-        clickImage.style.transform = "scale(1)";
-        setTimeout(() => {
-            clickImage.style.transform = "scale(0.6)";
-        }, 100);
     }
 
-    function showSnackBar() {
-        snackBar.style.display = "block";
+    function createFlyingScore(x, y) {
+        const flyingScore = document.createElement("div");
+        flyingScore.className = "flying-score";
+        flyingScore.textContent = "+1123 🤡";
+
+        // Позиционирование цифр в месте клика
+        flyingScore.style.left = x - imageContainer.getBoundingClientRect().left + "px";
+        flyingScore.style.top = y - imageContainer.getBoundingClientRect().top + "px";
+
+        imageContainer.appendChild(flyingScore);
+
+        // Удаление цифр после завершения анимации
         setTimeout(() => {
-            snackBar.style.display = "none";
-        }, 2000);
+            flyingScore.remove();
+        }, 1000);
     }
 
-    imageContainer.addEventListener("click", increaseScore);
+    imageContainer.addEventListener("mousedown", increaseScore);
+    imageContainer.addEventListener("mouseup", () => {
+        isClicking = false; // Сбрасываем флаг при отпускании мыши
+    });
 });
