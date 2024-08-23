@@ -3,88 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gant Alco Clicker</title>
-    <style>
-        body {
-            background-color: #25223a;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            font-family: Arial, sans-serif;
-            color: white;
-        }
-
-        .container {
-            text-align: center;
-            position: relative;
-        }
-
-        .score {
-            font-size: 100px;
-        }
-
-        .image-container {
-            position: relative;
-            margin-bottom: 30px;
-            cursor: pointer;
-            user-select: none; /* Убирает выделение */
-        }
-
-        .progress-bar {
-            width: 80%;
-            height: 20px;
-            background-color: #bf6524;
-            border-radius: 10px;
-            margin: 0 auto;
-        }
-
-        .progress-bar-fill {
-            height: 100%;
-            background-color: #ff8b1f;
-            width: 0%;
-            border-radius: 10px;
-            transition: width 0.2s ease-in-out;
-        }
-
-        img {
-            transition: transform 0.6s ease;
-            max-width: 100%;
-            user-select: none; /* Убирает выделение */
-        }
-
-        .flying-score {
-            position: absolute;
-            font-size: 20px;
-            color: #ff8b1f;
-            pointer-events: none;
-            animation: fly 1s forwards;
-        }
-
-        @keyframes fly {
-            0% {
-                transform: translateY(0);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(-50px);
-                opacity: 0;
-            }
-        }
-    </style>
+    <title>Celebration</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
         <div class="score" id="score">0</div>
         <div class="image-container" id="imageContainer">
-            <img src="assets/gant.png" id="clickImage" alt="Gant">
+            <img src="gant.png" id="clickImage" alt="Click me"  draggable="false">
         </div>
         <div class="progress-bar">
             <div class="progress-bar-fill" id="progressBarFill"></div>
         </div>
+        <div class="celebration" id="celebration">И что дальше?</div>
     </div>
-
     <script src="app.js"></script>
 </body>
 </html>

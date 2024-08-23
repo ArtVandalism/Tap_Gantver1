@@ -1,0 +1,125 @@
+body {
+    background-color: #25223a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: white;
+    user-select: none; /* Убирает выделение текста на всем теле документа */
+    transition: background 1s; /* Плавное изменение фона */
+}
+
+.container {
+    text-align: center;
+    position: relative;
+    user-select: none; /* Убирает выделение текста внутри контейнера */
+}
+
+.score {
+    font-size: 100px;
+    user-select: none; /* Убирает выделение текста */
+}
+
+.image-container {
+    position: relative;
+    margin-bottom: 30px;
+    cursor: pointer;
+    user-select: none; /* Убирает выделение текста */
+}
+
+.progress-bar {
+    width: 80%;
+    height: 20px;
+    background-color: #bf6524;
+    border-radius: 10px;
+    margin: 0 auto;
+    user-select: none; /* Убирает выделение текста */
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background-color: #ff8b1f;
+    width: 0%;
+    border-radius: 10px;
+    transition: width 0.2s ease-in-out;
+    user-select: none; /* Убирает выделение текста */
+}
+
+img {
+    transition: transform 0.6s ease;
+    max-width: 100%;
+    transform: scale(0.6); /* Устанавливаем начальный масштаб на 60% */
+    user-select: none; /* Убирает выделение текста */
+}
+
+.flying-score {
+    position: absolute;
+    font-size: 20px;
+    color: #ff8b1f;
+    pointer-events: none;
+    animation: fly 1s forwards;
+    user-select: none; /* Убирает выделение текста */
+}
+
+.celebration {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 40px;
+    color: #ff8b1f;
+    opacity: 0;
+    transition: opacity 2s; /* Плавное появление и исчезновение */
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    user-select: none; /* Убирает выделение текста */
+}
+
+.firework {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #ff8b1f;
+    border-radius: 50%;
+    animation: explode 10s ease-out forwards; /* Увеличено время анимации */
+    user-select: none; /* Убирает выделение текста */
+}
+
+@keyframes explode {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(5);
+        opacity: 0;
+    }
+}
+
+@keyframes fly {
+    0% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+}
+
+@keyframes rainbowBackground {
+    0% { background: linear-gradient(45deg, red, orange, yellow, green, cyan, blue, violet); }
+    14% { background: linear-gradient(45deg, orange, yellow, green, cyan, blue, violet, red); }
+    28% { background: linear-gradient(45deg, yellow, green, cyan, blue, violet, red, orange); }
+    42% { background: linear-gradient(45deg, green, cyan, blue, violet, red, orange, yellow); }
+    57% { background: linear-gradient(45deg, cyan, blue, violet, red, orange, yellow, green); }
+    71% { background: linear-gradient(45deg, blue, violet, red, orange, yellow, green, cyan); }
+    85% { background: linear-gradient(45deg, violet, red, orange, yellow, green, cyan, blue); }
+    100% { background: linear-gradient(45deg, red, orange, yellow, green, cyan, blue, violet); }
+}
+
+.rainbow-background {
+    animation: rainbowBackground 10s linear forwards; /* Анимация радуги для фона */
+}
