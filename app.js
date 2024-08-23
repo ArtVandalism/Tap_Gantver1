@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const progressBarFill = document.getElementById("progressBarFill");
     const celebrationText = document.getElementById("celebration");
     const body = document.body;
+	
 
     let score = parseInt(localStorage.getItem("score")) || 0;
     let animationTriggered = false; // Флаг для проверки, запущена ли анимация
