@@ -1,5 +1,5 @@
 body {
-    background-color: #25223a;
+    background-color: #121212;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -9,6 +9,19 @@ body {
     color: white;
     user-select: none; /* Убирает выделение текста на всем теле документа */
     transition: background 1s; /* Плавное изменение фона */
+}
+/* Убирает выделение текста на всех устройствах */
+body, .container, .image-container, .score, .progress-bar, .flying-score {
+    user-select: none; /* Убирает выделение текста */
+    -webkit-user-select: none; /* Поддержка для старых браузеров Webkit */
+    -moz-user-select: none; /* Поддержка для Firefox */
+    -ms-user-select: none; /* Поддержка для IE */
+    touch-action: manipulation; /* Убирает нежелательные действия при касании */
+}
+
+/* Убирает выделение фона при касании на iOS */
+* {
+    -webkit-tap-highlight-color: transparent;
 }
 
 .container {
@@ -76,6 +89,8 @@ img {
     border-radius: 10px;
     text-align: center;
     user-select: none; /* Убирает выделение текста */
+	visibility: hidden; /* Скрывает элемент, не занимая пространство */
+    pointer-events: none; /* Отключает клики на элемент */
 }
 
 .firework {
