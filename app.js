@@ -42,22 +42,25 @@ document.addEventListener("DOMContentLoaded", function () {
         createFlyingScore(event.clientX, event.clientY);
     }
 
-    function createFlyingScore(x, y) {
-        const flyingScore = document.createElement("div");
-        flyingScore.className = "flying-score";
-        flyingScore.textContent = "+1123 🤡";
+	function createFlyingScore(x, y) {
+		const flyingScore = document.createElement("div");
+		flyingScore.className = "flying-score";
+		flyingScore.textContent = "+1123 🤡";
 
-        // Позиционирование цифр в месте клика
-        flyingScore.style.left = x - imageContainer.getBoundingClientRect().left + "px";
-        flyingScore.style.top = y - imageContainer.getBoundingClientRect().top + "px";
+		// Позиционирование цифр в месте клика с небольшим смещением вверх и влево
+		const offsetX = 100; // смещение влево
+		const offsetY = 100; // смещение вверх
+		flyingScore.style.left = x - imageContainer.getBoundingClientRect().left - offsetX + "px";
+		flyingScore.style.top = y - imageContainer.getBoundingClientRect().top - offsetY + "px";
 
-        imageContainer.appendChild(flyingScore);
+		imageContainer.appendChild(flyingScore);
 
-        // Удаление цифр после завершения анимации
-        setTimeout(() => {
-            flyingScore.remove();
-        }, 1000);
-    }
+		// Удаление цифр после завершения анимации
+		setTimeout(() => {
+			flyingScore.remove();
+		}, 500);
+	}
+
 
     function triggerCelebration() {
         celebrationText.style.opacity = "1"; // Показать текст "И что дальше?"
@@ -76,7 +79,9 @@ document.addEventListener("DOMContentLoaded", function () {
             animationTriggered = true;
             setTimeout(() => {
                 celebrationText.style.opacity = "0"; // Скрыть текст через 2 секунды
-            }, 2000);
+				celebrationText.style.visibility = "hidden"; // Убедиться, что элемент скрыт
+				celebrationText.style.pointerEvents = "none"; // Отключить клики на элемент
+            }, 1000);
         }
     }
 
