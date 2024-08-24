@@ -109,7 +109,7 @@ img {
     font-size: 20px;
     color: #ff8b1f;
     pointer-events: none;
-    animation: fly 1s forwards;
+    animation: fly .33s forwards;
     user-select: none; /* Убирает выделение текста */
 }
 
@@ -134,7 +134,7 @@ img {
 }
 
 body {
-    animation: moveBackground 20s linear infinite; /* Добавляем анимацию движения фона */
+    animation: moveBackground 60s linear infinite; /* Добавляем анимацию движения фона */
 }
 
 .rainbow-background {
@@ -162,5 +162,5 @@ body {
 	background-color: var(--c2);
     background-size: 200px 200px;
     background-position: 0 0;
-	animation: moveBackground 10s linear infinite; /* Добавляем анимацию движения фона */
+	animation: moveBackground 30s linear infinite; /* Добавляем анимацию движения фона */
 }
