@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let animationTriggered = false; // Флаг для проверки, запущена ли анимация
 
     // Устанавливаем начальный масштаб изображения на 60% при загрузке страницы
-    clickImage.style.transform = "scale(0.6)";
+    clickImage.style.transform = "scale(0.65)";
     celebrationText.style.opacity = "0"; // Скрываем текст при загрузке страницы
 
     // Отображение сохраненного количества очков
@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Анимация картинки
         clickImage.style.transform = "scale(1)";
         setTimeout(() => {
-            clickImage.style.transform = "scale(0.6)";
+            clickImage.style.transform = "scale(0.5)";
         }, 100);
 
         // Вылетающие цифры
@@ -64,40 +64,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     function triggerCelebration() {
-        celebrationText.style.opacity = "1"; // Показать текст "И что дальше?"
-
-        // Создание "салютов"
-        for (let i = 0; i < 20; i++) {
-            createFirework(
-                Math.random() * window.innerWidth,
-                Math.random() * window.innerHeight
-            );
-        }
-
-        // Запуск радужной анимации фона
-        if (!animationTriggered) {
-            body.classList.add('rainbow-background');
-            animationTriggered = true;
-            setTimeout(() => {
-                celebrationText.style.opacity = "0"; // Скрыть текст через 2 секунды
+		// Запуск радужной анимации фона
+		if (!animationTriggered) {
+			body.classList.add('rainbow-background');
+			animationTriggered = true;
+			
+			// Скрыть текст через 2 секунды
+			setTimeout(() => {
+				celebrationText.style.opacity = "0"; // Скрыть текст
 				celebrationText.style.visibility = "hidden"; // Убедиться, что элемент скрыт
 				celebrationText.style.pointerEvents = "none"; // Отключить клики на элемент
-            }, 1000);
-        }
-    }
-
-    function createFirework(x, y) {
-        const firework = document.createElement("div");
-        firework.className = "firework";
-        firework.style.left = x + "px";
-        firework.style.top = y + "px";
-        document.body.appendChild(firework);
-
-        // Удаление салюта после завершения анимации через 10 секунд
-        setTimeout(() => {
-            firework.remove();
-        }, 10000);  // 10 секунд
-    }
-
+			}, 1000);
+		}
+	}
+	
     imageContainer.addEventListener("click", increaseScore);
 });
