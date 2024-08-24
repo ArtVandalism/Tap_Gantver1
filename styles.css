@@ -6,8 +6,8 @@ html, body {
 }
 
 body {
-      --c1: #7dbbca;
-      --c2: #252525;
+      --c1: white;
+      --c2: #121212;
 
       height: 100vh;
       margin: 0;
@@ -63,6 +63,13 @@ body, .container, .image-container, .score, .progress-bar, .flying-score {
 .score {
     font-size: 100px;
     user-select: none; /* Убирает выделение текста */
+    background-color: rgba(0, 0, 0, 0.6); /* Полупрозрачный черный фон */
+    padding: 5px; /* Отступы вокруг текста */
+    border-radius: 50px; /* Скругленные углы подложки */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), /* Основная тень */
+                0 1px 3px rgba(0, 0, 0, 0.08); /* Вспомогательная тень для более глубокого эффекта */
+    display: inline-block; /* Для того чтобы размер подложки соответствовал тексту */
+    text-align: center; /* Центрирование текста внутри подложки */
 }
 
 .image-container {
@@ -93,7 +100,7 @@ body, .container, .image-container, .score, .progress-bar, .flying-score {
 img {
     transition: transform 0.6s ease;
     max-width: 100%;
-    transform: scale(0.6); /* Устанавливаем начальный масштаб на 60% */
+    transform: scale(0.5); /* Устанавливаем начальный масштаб на 60% */
     user-select: none; /* Убирает выделение текста */
 }
 
@@ -104,43 +111,6 @@ img {
     pointer-events: none;
     animation: fly 1s forwards;
     user-select: none; /* Убирает выделение текста */
-}
-
-.celebration {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 40px;
-    color: #ff8b1f;
-    opacity: 0;
-    transition: opacity 2s; /* Плавное появление и исчезновение */
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    user-select: none; /* Убирает выделение текста */
-	visibility: hidden; /* Скрывает элемент, не занимая пространство */
-    pointer-events: none; /* Отключает клики на элемент */
-}
-
-.firework {
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    background-color: #ff8b1f;
-    border-radius: 50%;
-    animation: explode 10s ease-out forwards; /* Увеличено время анимации */
-    user-select: none; /* Убирает выделение текста */
-}
-
-@keyframes explode {
-    0% {
-        transform: scale(0);
-    }
-    100% {
-        transform: scale(5);
-        opacity: 0;
-    }
 }
 
 @keyframes fly {
@@ -154,17 +124,43 @@ img {
     }
 }
 
-@keyframes rainbowBackground {
-    0% { background: linear-gradient(45deg, red, orange, yellow, green, cyan, blue, violet); }
-    14% { background: linear-gradient(45deg, orange, yellow, green, cyan, blue, violet, red); }
-    28% { background: linear-gradient(45deg, yellow, green, cyan, blue, violet, red, orange); }
-    42% { background: linear-gradient(45deg, green, cyan, blue, violet, red, orange, yellow); }
-    57% { background: linear-gradient(45deg, cyan, blue, violet, red, orange, yellow, green); }
-    71% { background: linear-gradient(45deg, blue, violet, red, orange, yellow, green, cyan); }
-    85% { background: linear-gradient(45deg, violet, red, orange, yellow, green, cyan, blue); }
-    100% { background: linear-gradient(45deg, red, orange, yellow, green, cyan, blue, violet); }
+@keyframes moveBackground {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 400px 400px;
+    }
+}
+
+body {
+    animation: moveBackground 20s linear infinite; /* Добавляем анимацию движения фона */
 }
 
 .rainbow-background {
-    animation: rainbowBackground 10s linear forwards; /* Анимация радуги для фона */
+    background: radial-gradient(
+        circle at 27px 119px,
+        red 2px,
+        transparent 3px
+    ),
+    radial-gradient(circle at 69px 79px, orange 2px, transparent 3px),
+    radial-gradient(circle at 163px 57px, yellow 2px, transparent 3px),
+    radial-gradient(circle at 119px 180px, green 4px, transparent 5px),
+    radial-gradient(circle at 33px 69px, cyan 4px, transparent 5px),
+    radial-gradient(circle at 71px 177px, blue 6px, transparent 7px),
+    radial-gradient(circle at 159px 133px, violet 6px, transparent 7px),
+    radial-gradient(circle at 183px 23px, red 6px, transparent 7px),
+    radial-gradient(circle at 24px 166px, orange 7px, transparent 8px),
+    radial-gradient(circle at 114px 134px, yellow 7px, transparent 8px),
+    radial-gradient(circle at 82px 38px, green 7px, transparent 8px),
+    radial-gradient(circle at 176px 176px, cyan 9px, transparent 10px),
+    radial-gradient(circle at 66px 120px, blue 9px, transparent 10px),
+    radial-gradient(circle at 180px 94px, violet 9px, transparent 10px),
+    radial-gradient(circle at 126px 16px, red 9px, transparent 10px),
+    radial-gradient(circle at 121px 71px, orange 14px, transparent 15px),
+    radial-gradient(circle at 25px 25px, yellow 14px, transparent 15px);
+	background-color: var(--c2);
+    background-size: 200px 200px;
+    background-position: 0 0;
+	animation: moveBackground 10s linear infinite; /* Добавляем анимацию движения фона */
 }
