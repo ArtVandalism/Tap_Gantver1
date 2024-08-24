@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Удаление цифр после завершения анимации
         setTimeout(() => {
             flyingScore.remove();
-        }, 330);
+        }, 500);
     }
 
     function triggerCelebration() {
