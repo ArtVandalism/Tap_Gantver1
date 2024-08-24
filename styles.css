@@ -109,7 +109,7 @@ img {
     font-size: 20px;
     color: #ff8b1f;
     pointer-events: none;
-    animation: fly .33s forwards;
+    animation: fly .5s forwards;
     user-select: none; /* Убирает выделение текста */
 }
 
