@@ -1,3 +1,10 @@
+let tg = window.Telegram.WebApp;
+
+tg.expand();
+
+tg.MainButton.textColor = '#FFFFFF';
+tg.MainButton.textColor = '#2cab37';
+
 document.addEventListener("DOMContentLoaded", function () {
     const scoreElement = document.getElementById("score");
     const imageContainer = document.getElementById("imageContainer");
