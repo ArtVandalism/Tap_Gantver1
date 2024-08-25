@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let animationTriggered = false; // Флаг для проверки, запущена ли анимация
 
     // Устанавливаем начальный масштаб изображения на 60% при загрузке страницы
-    clickImage.style.transform = "scale(0.5)";
+    clickImage.style.transform = "scale(0.6)";
     celebrationText.style.opacity = "0"; // Скрываем текст при загрузке страницы
 
     // Отображение сохраненного количества очков
