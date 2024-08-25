@@ -1,3 +1,21 @@
+:root {
+  --linear-rainbow: linear-gradient(
+    to right,#ede6bf,#ecc947,#cb5a31,#6f5d79,#4e779a
+  );
+  --circle-rainbow: radial-gradient(
+    circle at left top,#ede6bf,#ecc947,#cb5a31,#6f5d79,#4e779a
+  );
+  --noise-texture: url(https://i.gyazo.com/a26366e538851a5c569ff648e99b7fd4.png);
+  --a1: #ffc9de;
+  --a2: #fdd97c;
+  --a3: #fbfdaa;
+  --a4: #c1f0b2;
+  --a5: #b2e4f0;
+  --a6: #d6b2f0;
+  --a7: #121212;
+
+}
+
 html, body {
     height: 100vh;
     margin: 0;
@@ -6,9 +24,8 @@ html, body {
 }
 
 body {
-      --c1: white;
-      --c2: #121212;
-
+      --c1: #ece0c8;
+      --c2: #191f1d;
       height: 100vh;
       margin: 0;
       background: radial-gradient(
@@ -61,17 +78,24 @@ body, .container, .image-container, .score, .progress-bar, .flying-score {
 }
 
 .score {
-    font-size: 100px;
+    color: #ece0c8;
+    font-size: 75px;
     user-select: none; /* Убирает выделение текста */
     background-color: rgba(0, 0, 0, 0.6); /* Полупрозрачный черный фон */
-    padding: 5px; /* Отступы вокруг текста */
-    border-radius: 50px; /* Скругленные углы подложки */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), /* Основная тень */
-                0 1px 3px rgba(0, 0, 0, 0.08); /* Вспомогательная тень для более глубокого эффекта */
+    padding: 10px; /* Отступы вокруг текста */
+    border-radius: 50%;
+    box-shadow: 0px 0px var(--shadow);
     display: inline-block; /* Для того чтобы размер подложки соответствовал тексту */
+    transition: all 0.4s;
     text-align: center; /* Центрирование текста внутри подложки */
 }
 
+.score:hover {
+  color: white;
+  scale: 1.1;
+  box-shadow: 16px 16px var(--shadow);
+  transition: all 0.2s;
+}
 .image-container {
     position: relative;
     margin-bottom: 30px;
@@ -82,7 +106,7 @@ body, .container, .image-container, .score, .progress-bar, .flying-score {
 .progress-bar {
     width: 80%;
     height: 20px;
-    background-color: #bf6524;
+    background-color: #0005;
     border-radius: 10px;
     margin: 0 auto;
     user-select: none; /* Убирает выделение текста */
@@ -90,7 +114,8 @@ body, .container, .image-container, .score, .progress-bar, .flying-score {
 
 .progress-bar-fill {
     height: 100%;
-    background-color: #ff8b1f;
+    background-color: #949993;
+    background-image: var(--linear-rainbow);
     width: 0%;
     border-radius: 10px;
     transition: width 0.2s ease-in-out;
@@ -98,9 +123,10 @@ body, .container, .image-container, .score, .progress-bar, .flying-score {
 }
 
 img {
-    transition: transform 0.6s ease;
+    transition: transform 0.5s ease;
     max-width: 100%;
-    transform: scale(0.5); /* Устанавливаем начальный масштаб на 60% */
+    z-index: 3;
+    transform: scale(0.6); /* Устанавливаем начальный масштаб на 60% */
     user-select: none; /* Убирает выделение текста */
 }
 
@@ -139,27 +165,27 @@ body {
 
 .rainbow-background {
     background: radial-gradient(
-        circle at 27px 119px,
-        red 2px,
-        transparent 3px
-    ),
-    radial-gradient(circle at 69px 79px, orange 2px, transparent 3px),
-    radial-gradient(circle at 163px 57px, yellow 2px, transparent 3px),
-    radial-gradient(circle at 119px 180px, green 4px, transparent 5px),
-    radial-gradient(circle at 33px 69px, cyan 4px, transparent 5px),
-    radial-gradient(circle at 71px 177px, blue 6px, transparent 7px),
-    radial-gradient(circle at 159px 133px, violet 6px, transparent 7px),
-    radial-gradient(circle at 183px 23px, red 6px, transparent 7px),
-    radial-gradient(circle at 24px 166px, orange 7px, transparent 8px),
-    radial-gradient(circle at 114px 134px, yellow 7px, transparent 8px),
-    radial-gradient(circle at 82px 38px, green 7px, transparent 8px),
-    radial-gradient(circle at 176px 176px, cyan 9px, transparent 10px),
-    radial-gradient(circle at 66px 120px, blue 9px, transparent 10px),
-    radial-gradient(circle at 180px 94px, violet 9px, transparent 10px),
-    radial-gradient(circle at 126px 16px, red 9px, transparent 10px),
-    radial-gradient(circle at 121px 71px, orange 14px, transparent 15px),
-    radial-gradient(circle at 25px 25px, yellow 14px, transparent 15px);
-	background-color: var(--c2);
+          circle at 27px 119px,
+          var(--a1) 2px,
+          transparent 3px
+        ),
+        radial-gradient(circle at 69px 79px, var(--a2) 2px, transparent 3px),
+        radial-gradient(circle at 163px 57px, var(--a3) 2px, transparent 3px),
+        radial-gradient(circle at 119px 180px, var(--a4) 4px, transparent 5px),
+        radial-gradient(circle at 33px 69px, var(--a5) 4px, transparent 5px),
+        radial-gradient(circle at 71px 177px, var(--a6) 6px, transparent 7px),
+        radial-gradient(circle at 159px 133px, var(--a1) 6px, transparent 7px),
+        radial-gradient(circle at 183px 23px, var(--a2) 6px, transparent 7px),
+        radial-gradient(circle at 24px 166px, var(--a3) 7px, transparent 8px),
+        radial-gradient(circle at 114px 134px, var(--a4) 7px, transparent 8px),
+        radial-gradient(circle at 82px 38px, var(--a5) 7px, transparent 8px),
+        radial-gradient(circle at 176px 176px, var(--a6) 9px, transparent 10px),
+        radial-gradient(circle at 66px 120px, var(--a1) 9px, transparent 10px),
+        radial-gradient(circle at 180px 94px, var(--a2) 9px, transparent 10px),
+        radial-gradient(circle at 126px 16px, var(--a3) 9px, transparent 10px),
+        radial-gradient(circle at 121px 71px, var(--a4) 14px, transparent 15px),
+        radial-gradient(circle at 25px 25px, var(--a5) 14px, transparent 15px);
+	background-color: var(--a7);
     background-size: 200px 200px;
     background-position: 0 0;
 	animation: moveBackground 30s linear infinite; /* Добавляем анимацию движения фона */
