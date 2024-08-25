@@ -1,6 +1,6 @@
 :root {
   --linear-rainbow: linear-gradient(
-    to right,#ede6bf,#ecc947,#cb5a31,#6f5d79,#4e779a
+    to right,#ffc9de,#fdd97c,#fbfdaa,#c1f0b2,#b2e4f0,#d6b2f0
   );
   --circle-rainbow: radial-gradient(
     circle at left top,#ede6bf,#ecc947,#cb5a31,#6f5d79,#4e779a
@@ -24,7 +24,7 @@ html, body {
 }
 
 body {
-      --c1: #ece0c8;
+      --c1: white;
       --c2: #191f1d;
       height: 100vh;
       margin: 0;
@@ -78,12 +78,12 @@ body, .container, .image-container, .score, .progress-bar, .flying-score {
 }
 
 .score {
-    color: #ece0c8;
+    color: white;
     font-size: 75px;
     user-select: none; /* Убирает выделение текста */
     background-color: rgba(0, 0, 0, 0.6); /* Полупрозрачный черный фон */
     padding: 10px; /* Отступы вокруг текста */
-    border-radius: 50%;
+    border-radius: 25px;
     box-shadow: 0px 0px var(--shadow);
     display: inline-block; /* Для того чтобы размер подложки соответствовал тексту */
     transition: all 0.4s;
