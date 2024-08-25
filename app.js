@@ -1,10 +1,3 @@
-let tg = window.Telegram.WebApp;
-
-tg.expand();
-
-tg.MainButton.textColor = '#FFFFFF';
-tg.MainButton.textColor = '#2cab37';
-
 document.addEventListener("DOMContentLoaded", function () {
     const scoreElement = document.getElementById("score");
     const imageContainer = document.getElementById("imageContainer");
@@ -12,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const progressBarFill = document.getElementById("progressBarFill");
     const celebrationText = document.getElementById("celebration");
     const body = document.body;
-
+  
     let score = parseInt(localStorage.getItem("score")) || 0;
     let animationTriggered = false; // Флаг для проверки, запущена ли анимация
 
@@ -65,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Удаление цифр после завершения анимации
         setTimeout(() => {
             flyingScore.remove();
-        }, 300);
+        }, 600);
     }
 
     function triggerCelebration() {
