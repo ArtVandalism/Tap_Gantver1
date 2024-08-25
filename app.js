@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let animationTriggered = false; // Флаг для проверки, запущена ли анимация
 
     // Устанавливаем начальный масштаб изображения на 60% при загрузке страницы
-    clickImage.style.transform = "scale(0.6)";
+    clickImage.style.transform = "scale(0.75)";
     celebrationText.style.opacity = "0"; // Скрываем текст при загрузке страницы
 
     // Отображение сохраненного количества очков
@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Анимация картинки
         clickImage.style.transform = "scale(1)";
         setTimeout(() => {
-            clickImage.style.transform = "scale(0.5)";
+            clickImage.style.transform = "scale(0.75)";
         }, 100);
 
         // Вылетающие цифры
@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Удаление цифр после завершения анимации
         setTimeout(() => {
             flyingScore.remove();
-        }, 500);
+        }, 300);
     }
 
     function triggerCelebration() {
@@ -79,7 +79,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 celebrationText.style.opacity = "0"; // Скрыть текст
                 celebrationText.style.visibility = "hidden"; // Убедиться, что элемент скрыт
                 celebrationText.style.pointerEvents = "none"; // Отключить клики на элемент
-            }, 1000);
+            }, 300);
         }
     }
 
