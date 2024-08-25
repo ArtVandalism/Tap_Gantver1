@@ -10,14 +10,17 @@
     <div class="container">
         <div class="score" id="score">0</div>
         <div class="image-container" id="imageContainer">
-            <img src="assets/gant.png" id="clickImage" alt="Click me"  draggable="false">
+            <img src="https://artvandalism.github.io/Tap_Gantver1/assets/gant.png" id="clickImage" alt="Click me"  draggable="false">
         </div>
         <div class="progress-bar">
             <div class="progress-bar-fill" id="progressBarFill"></div>
         </div>
         <div class="celebration" id="celebration">И что дальше?</div>
-    </div>
-	<script src="https://telegram.org/js/telegram-web-app.js"></script>
+    </div>	
 	<script src="app.js"></script>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <script>
+	let tg = window.Telegram.WebApp;
+	tg.expand();</script>
 </body>
 </html>
