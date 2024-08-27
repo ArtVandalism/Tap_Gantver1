@@ -12,23 +12,54 @@
   --a5: #b2e4f0;
   --a6: #d6b2f0;
   --a7: #121212;
+  --background-color: var(--tg-theme-bg-color, #121212);
+  --text-color: var(--tg-theme-text-color, #ffffff);
+  --main-color: var(--background-color);	
 }
 
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --background-color: #ffffff;
+    --text-color: #000000;
+    --shadow: 10px 10px 50px -28px rgba(18,18,18,1);
+  }
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+  }
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background-color: #121212;
+    --text-color: #ffffff;
+    --shadow: 10px 10px 50px -28px rgba(255,255,255,1);
+  }
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+  }
+}
+
+}
 html, body {
     height: 100vh;
-    margin: 0;
-    padding: 0;
     overflow: hidden;
 }
 
 body {
-    color: var(--tg-theme-text-color, #fff);
-    background: var(--tg-theme-bg-color, #121212);
-    --c1: var(--tg-theme-text-color, #fff);
-    --c2: var(--tg-theme-bg-color, #121212);
-    height: 100vh;
-    margin: 0;
-    background: radial-gradient(
+      color: var(--text-color);
+      background: var(--background-color);
+      --c1: var(--text-color);
+      --c2: var(--background-color);
+      height: 100vh;
+      margin: 0;
+      background: radial-gradient(
           circle at 27px 119px,
           var(--c1) 2px,
           transparent 3px
@@ -49,14 +80,13 @@ body {
         radial-gradient(circle at 126px 16px, var(--c1) 9px, transparent 10px),
         radial-gradient(circle at 121px 71px, var(--c1) 14px, transparent 15px),
         radial-gradient(circle at 25px 25px, var(--c1) 14px, transparent 15px);
-    background-size: 200px 200px;
-    background-position: 0 0;      
+      background-size: 200px 200px;
+      background-position: 0 0;      
     font-family: Roboto, monospace;
-    user-select: none;
+    user-select: none; /* Убирает выделение текста на всем теле документа */
     animation: moveBackground 60s linear infinite;
     transition: background 1s; /* Плавное изменение фона */
 }
-
 /* Убирает выделение текста на всех устройствах */
 body, .container, .image-container, .score, .progress-bar, .flying-score {
     user-select: none; /* Убирает выделение текста */
@@ -78,22 +108,23 @@ body, .container, .image-container, .score, .progress-bar, .flying-score {
 }
 
 .score {
-    color: white;
+    color: var(--text-color);
     font-size: 75px;
     user-select: none; /* Убирает выделение текста */
-    background-color: rgba(0, 0, 0, 0.6); /* Полупрозрачный черный фон */
+    background: rgba(0, 0, 0, 0.5); /* Полупрозрачный фон */
     padding: 10px; /* Отступы вокруг текста */
     border-radius: 30px;
-    box-shadow: 0px 0px var(--shadow);
+    box-shadow: var(--shadow);
     display: inline-block; /* Для того чтобы размер подложки соответствовал тексту */
     transition: all 300ms;
     text-align: center; /* Центрирование текста внутри подложки */
 }
 
 .score:hover {
-  color: white;
+  color: var(--text-color);
+  background: rgba(0, 0, 0, 0.5);
   scale: 1.1;
-  box-shadow: 16px 16px var(--shadow);
+  box-shadow: var(--shadow);
   transition: all 300ms;
 }
 .image-container {
@@ -123,7 +154,7 @@ body, .container, .image-container, .score, .progress-bar, .flying-score {
 }
 
 img {
-    transition: transform 600ms ease;
+    transition: transform 1s ease;
     max-width: 100%;
     z-index: 3;
     transform: scale(0.75); /* Устанавливаем начальный масштаб на 60% */
@@ -135,7 +166,7 @@ img {
     font-size: 20px;
     color: #ff8b1f;
     pointer-events: none;
-    animation: fly 600ms forwards;
+    animation: fly 1000ms forwards;
     user-select: none; /* Убирает выделение текста */
 }
 
@@ -151,16 +182,12 @@ img {
 }
 
 @keyframes moveBackground {
-    0% {
-        background-position: 0 0;
-    }
-    100% {
-        background-position: 400px 400px;
-    }
-}
-
-body {
-    animation: moveBackground 30s linear infinite; /* Добавляем анимацию движения фона */
+  0% {
+    background-position: top center;
+  }
+  100% {
+    background-position: bottom center;
+  }
 }
 
 .rainbow-background {
@@ -185,8 +212,8 @@ body {
         radial-gradient(circle at 126px 16px, var(--a3) 9px, transparent 10px),
         radial-gradient(circle at 121px 71px, var(--a4) 14px, transparent 15px),
         radial-gradient(circle at 25px 25px, var(--a5) 14px, transparent 15px);
-	background-color: var(--a7);
-    background-size: 200px 200px;
+	  background-size: 200px 200px;
     background-position: 0 0;
-	animation: moveBackground 30s linear infinite; /* Добавляем анимацию движения фона */
+	animation: moveBackground 45s linear infinite; /* Добавляем анимацию движения фона */
+	transition: background 1s; /* Плавное изменение фона */
 }
