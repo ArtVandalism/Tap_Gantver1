@@ -75,7 +75,21 @@ document.addEventListener("DOMContentLoaded", function () {
             }, 300);
         }
     }
+  
+  function hexToRgbA(hex, alpha) {
+    let r = parseInt(hex.slice(1, 3), 16);
+    let g = parseInt(hex.slice(3, 5), 16);
+    let b = parseInt(hex.slice(5, 7), 16);
 
+    return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+  }
+
+  // Получаем значение переменной и применяем его
+  const root = document.querySelector(':root');
+  const color = getComputedStyle(root).getPropertyValue('--main-color').trim();
+  const element = document.querySelector('.score');
+  element.style.background = hexToRgbA(color, 0.5); // Применяем прозрачность
+  
     // Обработчик касания для поддержки мультитача
     function handleTouchStart(event) {
         event.preventDefault(); // Предотвратить стандартное поведение браузера
