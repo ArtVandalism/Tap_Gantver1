@@ -22,11 +22,13 @@ html, body {
 }
 
 body {
-      --c1: white;
-      --c2: #191f1d;
-      height: 100vh;
-      margin: 0;
-      background: radial-gradient(
+    color: var(--tg-theme-text-color, #fff);
+    background: var(--tg-theme-bg-color, #121212);
+    --c1: var(--tg-theme-text-color, #fff);
+    --c2: var(--tg-theme-bg-color, #121212);
+    height: 100vh;
+    margin: 0;
+    background: radial-gradient(
           circle at 27px 119px,
           var(--c1) 2px,
           transparent 3px
@@ -47,14 +49,14 @@ body {
         radial-gradient(circle at 126px 16px, var(--c1) 9px, transparent 10px),
         radial-gradient(circle at 121px 71px, var(--c1) 14px, transparent 15px),
         radial-gradient(circle at 25px 25px, var(--c1) 14px, transparent 15px);
-      background-size: 200px 200px;
-      background-position: 0 0;
-      background-color: var(--c2);
+    background-size: 200px 200px;
+    background-position: 0 0;      
     font-family: Roboto, monospace;
-    color: white;
-    user-select: none; /* Убирает выделение текста на всем теле документа */
-    transition: background 30s; /* Плавное изменение фона */
+    user-select: none;
+    animation: moveBackground 60s linear infinite;
+    transition: background 1s; /* Плавное изменение фона */
 }
+
 /* Убирает выделение текста на всех устройствах */
 body, .container, .image-container, .score, .progress-bar, .flying-score {
     user-select: none; /* Убирает выделение текста */
