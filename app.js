@@ -5,6 +5,13 @@ document.addEventListener("DOMContentLoaded", function () {
     const progressBarFill = document.getElementById("progressBarFill");
     const celebrationText = document.getElementById("celebration");
     const body = document.body;
+
+    let tg = window.Telegram.WebApp;
+    tg.expand();
+
+    document.addEventListener('contextmenu', event => {
+        event.preventDefault(); // Отключение контекстного меню
+    });
   
     let score = parseInt(localStorage.getItem("score")) || 0;
     let animationTriggered = false; // Флаг для проверки, запущена ли анимация
@@ -16,6 +23,30 @@ document.addEventListener("DOMContentLoaded", function () {
     // Отображение сохраненного количества очков
     scoreElement.textContent = score;
     progressBarFill.style.width = (score % 100) + "%";
+
+    function sendScoreToGoogleSheets(userId, score) {
+    const url = 'YOUR_WEB_APP_URL'; // Замените на URL вашего веб-приложения
+
+    const payload = {
+        userId: userId,
+        score: score
+    };
+
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+    })
+    .then(response => response.text())
+    .then(result => {
+        console.log('Success:', result);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+}
 
     function increaseScore(x, y) {
         score += 1;
@@ -106,5 +137,10 @@ document.addEventListener("DOMContentLoaded", function () {
     imageContainer.addEventListener("click", (event) => {
         // Обработка кликов для поддержки однопальцевого ввода
         increaseScore(event.clientX, event.clientY);
+    });
+    // Обработчик события закрытия окна
+    window.addEventListener('beforeunload', function (event) {
+        const message = `Вы набрали ${score} очков, поздравляю!`;
+        tg.sendData(message); // Отправляем данные в Telegram бота
     });
 });
