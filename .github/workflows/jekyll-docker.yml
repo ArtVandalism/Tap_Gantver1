@@ -1,0 +1,27 @@
+name: Deploy site
+
+on:
+  push:
+    branches:
+      - GAS
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Build the site
+        run: |
+          echo "GAS URL is ${{ secrets.GAS_URL }}"
+          # Здесь будет процесс сборки сайта, например:
+          # npm install
+          # npm run build
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+
