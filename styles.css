@@ -1,9 +1,9 @@
 :root {
   --linear-rainbow: linear-gradient(
-    to right,#ffc9de,#fdd97c,#fbfdaa,#c1f0b2,#b2e4f0,#d6b2f0
+    to right, #ffc9de, #fdd97c, #fbfdaa, #c1f0b2, #b2e4f0, #d6b2f0
   );
   --circle-rainbow: radial-gradient(
-    circle at left top,#ede6bf,#ecc947,#cb5a31,#6f5d79,#4e779a
+    circle at left top, #ede6bf, #ecc947, #cb5a31, #6f5d79, #4e779a
   );
   --a1: #ffc9de;
   --a2: #fdd97c;
@@ -12,53 +12,26 @@
   --a5: #b2e4f0;
   --a6: #d6b2f0;
   --a7: #121212;
-  --background-color: var(--tg-theme-bg-color, #121212);
-  --text-color: var(--tg-theme-text-color, #ffffff);
-  --main-color: var(--background-color);	
+  --background-color: var(--tg-theme-bg-color, #121212); /* Прямое значение по умолчанию */
+  --text-color: var(--tg-theme-text-color, #ffffff); /* Прямое значение по умолчанию */
+  --main-color: var(--background-color);
+  --c1: #4285B4;
+  --shadow1: 0px 0px 15px rgba(0, 0, 0, 0.3);
+  --shadow2: 10px 10px 25px rgba(0, 0, 0, 0.5);
 }
 
 * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-@media (prefers-color-scheme: light) {
-  :root {
-    --background-color: #ffffff;
-    --text-color: #000000;
-    --shadow: 10px 10px 50px -28px rgba(18,18,18,1);
-  }
-body {
-    background-color: var(--background-color);
-    color: var(--text-color);
-  }
-}
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background-color: #121212;
-    --text-color: #ffffff;
-    --shadow: 10px 10px 50px -28px rgba(255,255,255,1);
-  }
-body {
-    background-color: var(--background-color);
-    color: var(--text-color);
-  }
-}
-
-}
-html, body {
-    height: 100vh;
-    overflow: hidden;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-      color: var(--text-color);
-      background: var(--background-color);
-      --c1: var(--text-color);
-      --c2: var(--background-color);
-      height: 100vh;
-      margin: 0;
+  color: var(--text-color);
+  background: var(--background-color);
+  --c1: #4285B4;
+  height: 100vh;
+  margin: 0;
       background: radial-gradient(
           circle at 27px 119px,
           var(--c1) 2px,
@@ -108,23 +81,23 @@ body, .container, .image-container, .score, .progress-bar, .flying-score {
 }
 
 .score {
-    color: var(--text-color);
+    color: var(--tg-theme-text-color, --text-color);
     font-size: 75px;
     user-select: none; /* Убирает выделение текста */
     background: rgba(0, 0, 0, 0.5); /* Полупрозрачный фон */
     padding: 10px; /* Отступы вокруг текста */
     border-radius: 30px;
-    box-shadow: var(--shadow);
+    box-shadow: var(--shadow1);
     display: inline-block; /* Для того чтобы размер подложки соответствовал тексту */
     transition: all 300ms;
     text-align: center; /* Центрирование текста внутри подложки */
 }
 
 .score:hover {
-  color: var(--text-color);
+  color: var(--tg-theme-text-color, --text-color);
   background: rgba(0, 0, 0, 0.5);
   scale: 1.1;
-  box-shadow: var(--shadow);
+  box-shadow: var(--shadow2);
   transition: all 300ms;
 }
 .image-container {
