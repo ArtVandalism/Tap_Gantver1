@@ -23,7 +23,6 @@ document.addEventListener("DOMContentLoaded", function () {
     // Отображение сохраненного количества очков
     scoreElement.textContent = score;
     progressBarFill.style.width = (score % 100) + "%";
-}
 
     function increaseScore(x, y) {
         score += 1;
