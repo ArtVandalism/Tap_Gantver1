@@ -14,10 +14,10 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     let score = parseInt(localStorage.getItem("score")) || 0;
-    let animationTriggered = false; // Флаг для проверки, запущена ли анимация
+    let animationTriggered = false;
 
     clickImage.style.transform = "scale(0.75)";
-    celebrationText.style.opacity = "0"; 
+    celebrationText.style.opacity = "0";
 
     scoreElement.textContent = score;
     progressBarFill.style.width = (score % 100) + "%";
@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
         flyingScore.className = "flying-score";
         flyingScore.textContent = "+1123 🤡";
 
-        const offsetX = 100; 
+        const offsetX = 100;
         const offsetY = 100;
         flyingScore.style.left = x - imageContainer.getBoundingClientRect().left - offsetX + "px";
         flyingScore.style.top = y - imageContainer.getBoundingClientRect().top - offsetY + "px";
@@ -96,5 +96,14 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    imageContainer.addEventListener("touchstart", handleTouchStart);
+    function handleClick(event) {
+        increaseScore(event.clientX, event.clientY);
+    }
+
+    // Определяем, есть ли у устройства сенсорный экран
+    if ('ontouchstart' in window) {
+        imageContainer.addEventListener("touchstart", handleTouchStart);
+    } else {
+        imageContainer.addEventListener("click", handleClick);
+    }
 });
