@@ -12,15 +12,13 @@ document.addEventListener("DOMContentLoaded", function () {
     document.addEventListener('contextmenu', event => {
         event.preventDefault(); // Отключение контекстного меню
     });
-  
+
     let score = parseInt(localStorage.getItem("score")) || 0;
     let animationTriggered = false; // Флаг для проверки, запущена ли анимация
 
-    // Устанавливаем начальный масштаб изображения на 60% при загрузке страницы
     clickImage.style.transform = "scale(0.75)";
-    celebrationText.style.opacity = "0"; // Скрываем текст при загрузке страницы
+    celebrationText.style.opacity = "0"; 
 
-    // Отображение сохраненного количества очков
     scoreElement.textContent = score;
     progressBarFill.style.width = (score % 100) + "%";
 
@@ -31,7 +29,6 @@ document.addEventListener("DOMContentLoaded", function () {
         let progress = (score % 100) / 100;
         progressBarFill.style.width = progress * 100 + "%";
 
-        // Сохранение количества очков в localStorage
         localStorage.setItem("score", score);
 
         if (score % 100 === 0) {
@@ -39,13 +36,11 @@ document.addEventListener("DOMContentLoaded", function () {
             triggerCelebration();
         }
 
-        // Анимация картинки
         clickImage.style.transform = "scale(1)";
         setTimeout(() => {
             clickImage.style.transform = "scale(0.75)";
         }, 100);
 
-        // Вылетающие цифры
         createFlyingScore(x, y);
     }
 
@@ -54,64 +49,52 @@ document.addEventListener("DOMContentLoaded", function () {
         flyingScore.className = "flying-score";
         flyingScore.textContent = "+1123 🤡";
 
-        // Позиционирование цифр в месте клика с небольшим смещением вверх и влево
-        const offsetX = 100; // смещение влево
-        const offsetY = 100; // смещение вверх
+        const offsetX = 100; 
+        const offsetY = 100;
         flyingScore.style.left = x - imageContainer.getBoundingClientRect().left - offsetX + "px";
         flyingScore.style.top = y - imageContainer.getBoundingClientRect().top - offsetY + "px";
 
         imageContainer.appendChild(flyingScore);
 
-        // Удаление цифр после завершения анимации
         setTimeout(() => {
             flyingScore.remove();
         }, 600);
     }
 
     function triggerCelebration() {
-        // Запуск радужной анимации фона
         if (!animationTriggered) {
             body.classList.add('rainbow-background');
             animationTriggered = true;
-            
-            // Скрыть текст через 2 секунды
+
             setTimeout(() => {
-                celebrationText.style.opacity = "0"; // Скрыть текст
-                celebrationText.style.visibility = "hidden"; // Убедиться, что элемент скрыт
-                celebrationText.style.pointerEvents = "none"; // Отключить клики на элемент
+                celebrationText.style.opacity = "0";
+                celebrationText.style.visibility = "hidden";
+                celebrationText.style.pointerEvents = "none";
             }, 300);
         }
     }
-  
-  function hexToRgbA(hex, alpha) {
-    let r = parseInt(hex.slice(1, 3), 16);
-    let g = parseInt(hex.slice(3, 5), 16);
-    let b = parseInt(hex.slice(5, 7), 16);
 
-    return `rgba(${r}, ${g}, ${b}, ${alpha})`;
-  }
+    function hexToRgbA(hex, alpha) {
+        let r = parseInt(hex.slice(1, 3), 16);
+        let g = parseInt(hex.slice(3, 5), 16);
+        let b = parseInt(hex.slice(5, 7), 16);
 
-  // Получаем значение переменной и применяем его
-  const root = document.querySelector(':root');
-  const color = getComputedStyle(root).getPropertyValue('--main-color').trim();
-  const element = document.querySelector('.score');
-  element.style.background = hexToRgbA(color, 0.5); // Применяем прозрачность
-  
-    // Обработчик касания для поддержки мультитача
+        return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+    }
+
+    const root = document.querySelector(':root');
+    const color = getComputedStyle(root).getPropertyValue('--main-color').trim();
+    const element = document.querySelector('.score');
+    element.style.background = hexToRgbA(color, 0.5);
+
     function handleTouchStart(event) {
-        event.preventDefault(); // Предотвратить стандартное поведение браузера
+        event.preventDefault();
 
-        // Обработка всех точек касания
         for (let i = 0; i < event.changedTouches.length; i++) {
             const touch = event.changedTouches[i];
             increaseScore(touch.clientX, touch.clientY);
         }
     }
 
-    // Добавляем обработчик события касания и клика к контейнеру
     imageContainer.addEventListener("touchstart", handleTouchStart);
-    imageContainer.addEventListener("click", (event) => {
-        // Обработка кликов для поддержки однопальцевого ввода
-        increaseScore(event.clientX, event.clientY);
-    });
 });
