@@ -18,6 +18,8 @@
   --c1: var(--tg-theme-text-color, #ffffff);
   --shadow1: 0px 0px 15px rgba(0, 0, 0, 0.3);
   --shadow2: 10px 10px 25px rgba(0, 0, 0, 0.5);
+  --url1: url("./assets/pill.png");
+    --url2: url("./assets/vodka.png");
 }
 
 * {
@@ -30,30 +32,11 @@ body {
   color: var(--text-color);
   height: 100vh;
   margin: 0;
-      background: radial-gradient(
-          circle at 27px 119px,
-          var(--c1) 2px,
-          transparent 3px
-        ),
-        radial-gradient(circle at 69px 79px, var(--c1) 2px, transparent 3px),
-        radial-gradient(circle at 163px 57px, var(--c1) 2px, transparent 3px),
-        radial-gradient(circle at 119px 180px, var(--c1) 4px, transparent 5px),
-        radial-gradient(circle at 33px 69px, var(--c1) 4px, transparent 5px),
-        radial-gradient(circle at 71px 177px, var(--c1) 6px, transparent 7px),
-        radial-gradient(circle at 159px 133px, var(--c1) 6px, transparent 7px),
-        radial-gradient(circle at 183px 23px, var(--c1) 6px, transparent 7px),
-        radial-gradient(circle at 24px 166px, var(--c1) 7px, transparent 8px),
-        radial-gradient(circle at 114px 134px, var(--c1) 7px, transparent 8px),
-        radial-gradient(circle at 82px 38px, var(--c1) 7px, transparent 8px),
-        radial-gradient(circle at 176px 176px, var(--c1) 9px, transparent 10px),
-        radial-gradient(circle at 66px 120px, var(--c1) 9px, transparent 10px),
-        radial-gradient(circle at 180px 94px, var(--c1) 9px, transparent 10px),
-        radial-gradient(circle at 126px 16px, var(--c1) 9px, transparent 10px),
-        radial-gradient(circle at 121px 71px, var(--c1) 14px, transparent 15px),
-        radial-gradient(circle at 25px 25px, var(--c1) 14px, transparent 15px);
+  background-image: var(--url1);
       background-color: var(--background-color);
-      background-size: 200px 200px;
-      background-position: 0 0;      
+      background-size: 50px 50px;
+	  background-position: center center;
+	  background-clip: content-box;     
     font-family: Roboto, monospace;
     user-select: none; /* Убирает выделение текста на всем теле документа */
     animation: moveBackground 60s linear infinite;
@@ -163,30 +146,11 @@ img {
 }
 
 .rainbow-background {
-    background: radial-gradient(
-          circle at 27px 119px,
-          var(--a1) 2px,
-          transparent 3px
-        ),
-        radial-gradient(circle at 69px 79px, var(--a2) 2px, transparent 3px),
-        radial-gradient(circle at 163px 57px, var(--a3) 2px, transparent 3px),
-        radial-gradient(circle at 119px 180px, var(--a4) 4px, transparent 5px),
-        radial-gradient(circle at 33px 69px, var(--a5) 4px, transparent 5px),
-        radial-gradient(circle at 71px 177px, var(--a6) 6px, transparent 7px),
-        radial-gradient(circle at 159px 133px, var(--a1) 6px, transparent 7px),
-        radial-gradient(circle at 183px 23px, var(--a2) 6px, transparent 7px),
-        radial-gradient(circle at 24px 166px, var(--a3) 7px, transparent 8px),
-        radial-gradient(circle at 114px 134px, var(--a4) 7px, transparent 8px),
-        radial-gradient(circle at 82px 38px, var(--a5) 7px, transparent 8px),
-        radial-gradient(circle at 176px 176px, var(--a6) 9px, transparent 10px),
-        radial-gradient(circle at 66px 120px, var(--a1) 9px, transparent 10px),
-        radial-gradient(circle at 180px 94px, var(--a2) 9px, transparent 10px),
-        radial-gradient(circle at 126px 16px, var(--a3) 9px, transparent 10px),
-        radial-gradient(circle at 121px 71px, var(--a4) 14px, transparent 15px),
-        radial-gradient(circle at 25px 25px, var(--a5) 14px, transparent 15px);
+  background-image: var(--url2);
   background-color: var(--background-color);
-	  background-size: 200px 200px;
-    background-position: 0 0;
+	  background-size: 45px 90px;
+	  background-position: center center;
+	  background-clip: content-box;
 	animation: moveBackground 45s linear infinite; /* Добавляем анимацию движения фона */
 	transition: background 1s; /* Плавное изменение фона */
 }
