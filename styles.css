@@ -12,10 +12,10 @@
   --a5: #b2e4f0;
   --a6: #d6b2f0;
   --a7: #121212;
-  --background-color: var(--tg-theme-bg-color, #121212); /* Прямое значение по умолчанию */
+  --background-color: var(--tg-theme-bg-color,#121212); /* Прямое значение по умолчанию */
   --text-color: var(--tg-theme-text-color, #ffffff); /* Прямое значение по умолчанию */
   --main-color: var(--background-color);
-  --c1: #4285B4;
+  --c1: var(--tg-theme-text-color, #ffffff);
   --shadow1: 0px 0px 15px rgba(0, 0, 0, 0.3);
   --shadow2: 10px 10px 25px rgba(0, 0, 0, 0.5);
 }
@@ -28,8 +28,6 @@
 
 body {
   color: var(--text-color);
-  background: var(--background-color);
-  --c1: #4285B4;
   height: 100vh;
   margin: 0;
       background: radial-gradient(
@@ -53,6 +51,7 @@ body {
         radial-gradient(circle at 126px 16px, var(--c1) 9px, transparent 10px),
         radial-gradient(circle at 121px 71px, var(--c1) 14px, transparent 15px),
         radial-gradient(circle at 25px 25px, var(--c1) 14px, transparent 15px);
+      background-color: var(--background-color);
       background-size: 200px 200px;
       background-position: 0 0;      
     font-family: Roboto, monospace;
@@ -185,6 +184,7 @@ img {
         radial-gradient(circle at 126px 16px, var(--a3) 9px, transparent 10px),
         radial-gradient(circle at 121px 71px, var(--a4) 14px, transparent 15px),
         radial-gradient(circle at 25px 25px, var(--a5) 14px, transparent 15px);
+  background-color: var(--background-color);
 	  background-size: 200px 200px;
     background-position: 0 0;
 	animation: moveBackground 45s linear infinite; /* Добавляем анимацию движения фона */
